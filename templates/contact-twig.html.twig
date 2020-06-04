@@ -29,8 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputSubject1">Sujet</label>
-                        {# @todo rajouter la valeur du champ subject #}
-                        <input name="subject" type="text" class="form-control {% if errors.subject is defined %}is-invalid{% endif %}" id="exampleInputPassword1">
+                        <input name="subject" type="text" class="form-control {% if errors.subject is defined %}is-invalid{% endif %}" id="exampleInputPassword1" value="{{ formData.subject }}">
                         {% if errors.subject is defined %}
                         <div class="invalid-feedback">
                             {{ messages.subject }}
@@ -39,9 +38,12 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Message</label>
-                        {# @todo rajouter le message d'erreur du champ subject #}
-                        {# @todo rajouter la valeur du champ message #}
-                        <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea name="message" class="form-control {% if errors.message is defined %}is-invalid{% endif %}" id="exampleFormControlTextarea1" rows="3">{{ formData.message }}</textarea>
+                        {% if errors.message is defined %}
+                        <div class="invalid-feedback">
+                            {{ messages.message }}
+                        </div>
+                        {% endif %}
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

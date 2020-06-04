@@ -24,8 +24,6 @@ $formData = [
 ];
 
 if ($_POST) {
-    dump($_POST);
-
     $errors = [];
     $messages = [];
 
@@ -38,7 +36,9 @@ if ($_POST) {
         $formData['subject'] = $_POST['subject'];
     }
 
-    // @todo ajouter le bloc pour le champ message
+    if (isset($_POST['message'])) {
+        $formData['message'] = $_POST['message'];
+    }
 
     // validation des données envoyées par l'utiilisateur
     if (!isset($_POST['email']) || empty($_POST['email'])) {
@@ -49,19 +49,36 @@ if ($_POST) {
         $messages['email'] = "Merci de renseigner une adresse mail valide";
     }
 
-    // @todo compléter la validation :
-    // - s'assurer que le sujet fait plus de 3 caractères et moins de 201 caractères
     if (!isset($_POST['subject']) || empty($_POST['subject'])) {
         $errors['subject'] = true;
-        $messages['subject'] = "Merci de renseigner votre le sujet";
+        $messages['subject'] = "Merci de renseigner le sujet";
+    } elseif (strlen($_POST['subject']) < 4) {
+        $errors['subject'] = true;
+        $messages['subject'] = "Le sujet doit faire 4 caractères minimum";
+    } elseif (strlen($_POST['subject']) > 200) {
+        $errors['subject'] = true;
+        $messages['subject'] = "Le sujet doit faire 200 caractères maximum";
     }
 
-    // @todo compléter la validation pour le champ message :
-    // - s'assurer que le message ne contient pas de caractères <, ou >
-    // - s'assurer que le message fait plus de 3 caractères et moins de 1001 caractères
+    if (!isset($_POST['message']) || empty($_POST['message'])) {
+        $errors['message'] = true;
+        $messages['message'] = "Merci de renseigner votre message";
+    } elseif (strlen($_POST['message']) < 4) {
+        $errors['message'] = true;
+        $messages['message'] = "Le message doit faire 4 caractères minimum";
+    } elseif (strlen($_POST['message']) > 1000) {
+        $errors['message'] = true;
+        $messages['message'] = "Le message doit faire 1000 caractères maximum";
+    } elseif (
+        strpos($_POST['message'], '<') !== false
+        || strpos($_POST['message'], '>') !== false
+    ) {
+        $errors['message'] = true;
+        $messages['message'] = "Les caractères suivants sont interdits : < >";
+    }
 
     if (!$errors) {
-        sendmail('contact@example.com', $_POST['email'], $_POST['subject'], $_POST['message']);
+        dump('ok');
     }
 }
 
