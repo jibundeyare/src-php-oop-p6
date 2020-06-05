@@ -19,13 +19,15 @@ $twig->addExtension(new \Twig\Extension\DebugExtension());
 
 // démarrage de la session
 session_start();
-// suppression de toutes les données de la session
-session_unset();
-// suppression de la session
-session_destroy();
+
+if (!isset($_SESSION['user_id'])) {
+    $url = 'session-read-twig.php';
+    header("Location: {$url}", true, 302);
+    exit();
+}
 
 // affichage du rendu d'un template
-echo $twig->render('session-clear-twig.html.twig', [
+echo $twig->render('session-private-twig.html.twig', [
     // transmission de données au template
 ]);
 

@@ -17,6 +17,7 @@ $twig = new \Twig\Environment($loader, [
 // chargement de l'extension Twig_Extension_Debug
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
+// démarrage de la session
 session_start();
 
 // affichage du rendu d'un template

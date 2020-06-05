@@ -7,7 +7,13 @@
 </head>
 <body>
     <h1>$_SESSION read</h1>
+    {# vérification de l'existence de la clé 'foo' dans le tableau session #}
+    {% if session.foo is defined %}
+        {# affichage de la valeur associé à la clé 'foo' dans le tableau session #}
+        <p>{{ session.foo }}</p>
+    {% endif %}
     <ul>
+        {# affichage de toutes les clés et valeurs du tableau session #}
         {% for key, value in session %}
             <li>{{ key }}: {{ value }}</li>
         {% endfor %}
