@@ -12,12 +12,15 @@ Vous devrez créer plusieurs scripts PHP et templates Twig :
 - la page privées `public/private-page.php` et son template `templates/private-page.html.twig`
 - la page de déconnexion `public/logout.php` (qui n'a pas besoin de template)
 
+Vous êtes libre d'utiliser bootstrap ou un autre framework CSS mais dans tout les cas vous devez soigner l'apparence.
+Les templates Twig en HTML brut sans aucune feuille de style sont refusés.
+
 ### Le compte utilisateur
 
 La connexion ne doit fonctionner que si vous avez entré les données suivante dans le formulaire de login :
 
 1. `login` : `toto`
-2. `password` : `123`
+2. `password` : `12345678`
 
 ### La page de login
 
@@ -27,9 +30,6 @@ La page de login doit afficher un formulaire HTML avec deux champs :
 2. `password` : champ input de type password
 
 Les données du formulaire  doivent être envoyée avec la méthode `post`.
-
-Vous êtes libre d'utiliser bootstrap ou un autre framework CSS mais dans tout les cas vous devez soigner l'apparence.
-Les templates Twig en HTML brut sont refusés.
 
 La page de login doit traiter les données du formulaire renvoyées par l'utilisateur :
 
@@ -64,7 +64,7 @@ Les erreurs à détecter :
 1. le champ ne doit pas être vide
 2. le login doit faire 4 caractères minimum
 3. le login doit faire 100 caractères maximum
-4. le login doit correspondre à celui de la variable `$suer`
+4. le login doit correspondre à celui de la variable `$user`
 
 #### Validation du champ `password`
 
@@ -73,7 +73,7 @@ Les erreurs à détecter :
 1. le champ ne doit pas être vide
 2. le password doit faire 4 caractères minimum
 3. le password doit faire 100 caractères maximum
-4. le password doit correspondre à celui de la variable `$suer`
+4. le password doit correspondre à celui de la variable `$user`
 
 Pour valider que le mot de passe correspond à celui de la variable `$user`, au lieu de faire une simple comparaison (avec `!=`), vous utiliserez la fonction `password_verify()`.
 Voici un exemple d'utilisation de cette fonction :
