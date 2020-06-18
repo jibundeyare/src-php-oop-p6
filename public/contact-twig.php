@@ -23,10 +23,10 @@ $formData = [
     'message' => '',
 ];
 
-if ($_POST) {
-    $errors = [];
-    $messages = [];
+$errors = [];
+$messages = [];
 
+if ($_POST) {
     // remplacement des valeur par défaut par celles de l'utilisateur
     if (isset($_POST['email'])) {
         $formData['email'] = $_POST['email'];

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+        <form method="post">
+        <div class="form-group row">
+            <label for="login" class="col-4 col-form-label">Login</label> 
+            <div class="col-8">
+            <input id="login" name="login" placeholder="votre login" type="text" class="form-control {% if errors.form is defined %}is-invalid{% endif %}" value="{{ formData.login }}">
+            {% if errors.form is defined %}
+            <div class="invalid-feedback">
+                {{ messages.form }}
+            </div>
+            {% endif %}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-4 col-form-label">Mot de passe</label> 
+            <div class="col-8">
+            <input id="password" name="password" placeholder="votre mot de passe" type="password" class="form-control {% if errors.form is defined %}is-invalid{% endif %}" value="{{ formData.password }}">
+            {% if errors.form is defined %}
+            <div class="invalid-feedback">
+                {{ messages.form }}
+            </div>
+            {% endif %}
+            </div>
+        </div> 
+        <div class="form-group row">
+            <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </div>
+        </form>
+    </div>
+
+</body>
+</html>

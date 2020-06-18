@@ -1,0 +1,3 @@
+<?php
+
+// partie métier

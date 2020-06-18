@@ -78,7 +78,7 @@ Les erreurs à détecter :
 Pour valider que le mot de passe correspond à celui de la variable `$user`, au lieu de faire une simple comparaison (avec `!=`), vous utiliserez la fonction `password_verify()`.
 Voici un exemple d'utilisation de cette fonction :
 
-    if (!password_verify($_POST['password'], $user['passwrd_hash'])) {
+    if (!password_verify($_POST['password'], $user['password_hash'])) {
         echo 'mauvais mot passe';
     }
 
