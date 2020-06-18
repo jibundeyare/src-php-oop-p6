@@ -124,7 +124,27 @@ Les erreurs à détecter :
 2. la quantité doit être un nombre entier (pas de `float`)
 3. la quantité doit être supérieure ou égale à zéro
 
-Vous pouvez utiliser la fonction `is_int()` dans un bloc `if` pour vérifier si une variable contient un nombre entier.
+Vous pouvez utiliser le bloc de code suivant pour vérifier si une variable contient un nombre entier :
+
+    if (
+        is_numeric($_POST['quantity'])
+        && ($_POST['number'] - floor($_POST['number'])) == 0
+    ) {
+        // la variable contient un nombre entier
+    } else {
+        // la variable ne contient pas de nombre entier
+    }
+
+Ou pour vérifier si une variable ne contient pas de nombre entier :
+
+    if (
+        is_numeric($_POST['quantity'])
+        && ($_POST['number'] - floor($_POST['number'])) != 0
+    ) {
+        // la variable ne contient pas de nombre entier
+    } else {
+        // la variable contient un nombre entier
+    }
 
 #### Redirection vers la page qui liste les articles existants
 
