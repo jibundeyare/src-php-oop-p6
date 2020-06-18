@@ -62,7 +62,10 @@ if ($_POST) {
         $messages['form'] = 'identifiant ou mot de passe incorrect';
     }
 
+    // on vérifie s'il y a des erreurs
     if (!$errors) {
+        // il n'y a pas d'erreurs
+
         // démarrage de la session
         session_start();
 
@@ -70,7 +73,7 @@ if ($_POST) {
         $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['login'] = $user['login'];
 
-        // redirection vers la page privée
+        // redirection de l'utilisateur vers la page privée
         $url = 'private-page.php';
         header("Location: {$url}", true, 302);
         exit();
