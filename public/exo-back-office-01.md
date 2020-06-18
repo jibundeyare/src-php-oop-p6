@@ -146,6 +146,14 @@ Ou pour vérifier si une variable ne contient pas de nombre entier :
         // la variable contient un nombre entier
     }
 
+Alternativement, pour plus de concision, vous pouvez utiliser le bloc suivant :
+
+    if ((!is_int(0 + $_POST['quantity']))) {
+        // la variable ne contient pas de nombre entier
+    } else {
+        // la variable contient un nombre entier
+    }
+
 #### Redirection vers la page qui liste les articles existants
 
 Le code suivant permet de rediriger vers la page qui liste les articles existants :
