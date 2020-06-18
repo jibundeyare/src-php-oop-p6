@@ -41,13 +41,13 @@ Par exemple, en PHP :
 
 Autre exemple, en Twig :
 
-    {{ for article in articles }}
+    {% for article in articles %}
         {{ article.id }}
         {{ article.name }}
         {{ article.description }}
         {{ article.price }}
         {{ article.quantity }}
-    {{ endfor }}
+    {% endfor %}
 
 ### La page qui liste les articles existants
 
